@@ -1,4 +1,4 @@
-package com.example.demo.artists.model;
+package com.example.demo.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Artist {
+public class ArtistEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,3 @@ public class Artist {
     @Column(name = "Name")
     private String name;
 }
-

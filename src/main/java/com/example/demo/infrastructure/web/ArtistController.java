@@ -1,8 +1,9 @@
-package com.example.demo.artists.controller;
+package com.example.demo.infrastructure.web;
 
 
-import com.example.demo.artists.model.Artist;
-import com.example.demo.artists.service.ArtistService;
+import com.example.demo.application.port.ArtistServicePort;
+import com.example.demo.domain.model.Artist;
+import com.example.demo.application.service.ArtistService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,27 +14,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ArtistController {
 
-    private final ArtistService artistService;
+    private final ArtistServicePort artistServicePort;
 
     @GetMapping
     public List<Artist> getAllArtists() {
-        return artistService.findAllArtist();
+        return artistServicePort.getAllArtists();
     }
 
-    // Endpoints adicionales
     @GetMapping("/{id}")
     public Artist getArtistById(@PathVariable Integer id) {
-        return artistService.findArtistById(id);
+        return artistServicePort.getArtistById(id);
     }
 
     @PostMapping
     public Artist createArtist(@RequestBody Artist artist) {
-        return artistService.saveArtist(artist);
+        return artistServicePort.createArtist(artist);
     }
 
     @DeleteMapping("/{id}")
     public void deleteArtist(@PathVariable Integer id) {
-        artistService.deleteArtist(id);
+        artistServicePort.deleteArtist(id);
     }
 }
 
