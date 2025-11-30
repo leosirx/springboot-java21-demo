@@ -29,4 +29,13 @@ public class ArtistService {
     public void deleteArtist(Integer id) {
         repository.deleteById(id);
     }
+
+    public Artist updateArtist(Integer id, Artist artist) {
+        return repository.findById(id)
+                .map(existingArtist -> {
+                    artist.setArtistId(id);
+                    return repository.save(artist);
+                })
+                .orElseThrow(() -> new RuntimeException("Artist not found with id: " + id));
+    }
 }
