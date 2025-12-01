@@ -2,6 +2,7 @@ package com.example.demo.artists.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Artist {
     private Integer artistId;
 
     @Column(name = "Name")
+    @NotBlank(message = "Name is mandatory")
     @Schema(description = "Name of the artist", example = "The Beatles")
     private String name;
 }

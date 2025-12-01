@@ -6,6 +6,7 @@ import com.example.demo.artists.service.ArtistService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class ArtistController {
     @Operation(summary = "Create a new artist", description = "Create a new artist in the system")
     public Artist createArtist(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Artist object to create")
-            @RequestBody Artist artist) {
+            @Valid @RequestBody Artist artist) { // ✅ Agregar @Valid
         return artistService.saveArtist(artist);
     }
 
